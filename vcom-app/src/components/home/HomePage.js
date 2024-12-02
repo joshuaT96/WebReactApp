@@ -3,7 +3,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import Link from 'react-bootstrap/NavLink';
+//import Link from 'react-bootstrap/NavLink';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
     return(
@@ -22,8 +23,8 @@ function HomePage() {
                         TEXT
                     </p>
                     <Link
-                        to ={{ pathname: '/contacts' }}>
-                        <Button variant="outline-primary">push button &gt;&gt;</Button>
+                        to ={{ pathname: '/contents' }}>
+                        <Button variant="outline-primary">View Site Contents &gt;&gt;</Button>
                     </Link>
                 </Col>
              </Row>

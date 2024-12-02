@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vcomapp-dev-1e16c-authRole",
+      "UnauthRoleArn": "arn:aws:iam::767397902548:role/amplify-vcomapp-dev-1e16c-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::767397902548:role/amplify-vcomapp-dev-1e16c-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-vcomapp-dev-1e16c-deployment",
+      "UnauthRoleName": "amplify-vcomapp-dev-1e16c-unauthRole",
+      "StackName": "amplify-vcomapp-dev-1e16c",
+      "StackId": "arn:aws:cloudformation:us-east-1:767397902548:stack/amplify-vcomapp-dev-1e16c/d207a220-ae5a-11ef-8dee-0affdae051bd",
+      "AmplifyAppId": "d31a7rbgciacys"
+    },
+    "categories": {
+      "auth": {
+        "vcomapp817303a9": {}
+      }
+    }
+  }
+}

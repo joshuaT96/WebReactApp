@@ -5,24 +5,63 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from 'react-router-dom'; 
 
 import HomePage from './components/home/HomePage';
-import LoginPage from './components/auth/LoginPage';
-import RegisterPage from './components/auth/RegisterPage';
+//import LoginPage from './components/auth/LoginPage';
+//import RegisterPage from './components/auth/RegisterPage';
 import Contents from './components/contents/contents';
 
+import { Amplify } from 'aws-amplify';
+import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-react';
+import awsExports from './aws-exports';
+
+import '@aws-amplify/ui-react/styles.css';
+import { configure } from '@testing-library/react';
+
+Amplify.configure(awsExports);
 
 function App() {
+
+  const components = {
+    Header() {
+      const { tokens } = useTheme();
+      return (
+        <View textAlign="center" padding={tokens.space.large}>
+          <Image
+            alt="Solareff Logo"
+            src="/img/pv-panel.png"
+          />
+        </View>
+      );
+    },
+
+    Footer() {
+      const { tokens } = useTheme();
+  
+      return (
+        <View textAlign="center" padding={tokens.space.large}>
+          <Text color={tokens.colors.neutral[80]}>
+            &copy; 2024 Solareff
+          </Text>
+        </View>
+      );
+    }
+  }
+
   return (
-    <div>
-      <SiteNav/>
-        <Routes>
-          <Route path='*' element={<HomePage/>}/>
-          <Route path='/' exact={true} element={<HomePage/>}/>
-          <Route path='/login' element={<LoginPage/>}/>
-          <Route path='/register' element={<RegisterPage/>}/>
-          <Route path='/contents' element={<Contents/>}/>
-        </Routes>
-      <SiteFooter/>
-    </div>
+    
+      <Authenticator loginMechanisms={['email']} components={components}>
+      {({signOut, user}) => (
+        <div>
+          <SiteNav logOut={signOut}/>
+            <Routes>
+              <Route path='*' element={<HomePage/>}/>
+              <Route path='/' exact={true} element={<HomePage/>}/>
+              <Route path='/contents' element={<Contents/>}/>
+           </Routes>
+          <SiteFooter/>
+        </div>
+      )}
+      </Authenticator>
+
   );
 }
 
