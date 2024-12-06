@@ -6,16 +6,18 @@ import { Amplify } from 'aws-amplify';
 import { GraphQLAPI, graphqlOperation } from '@aws-amplify/api-graphql';
 import awsExports from '../../aws-exports';
 
+import { listVcomContents } from '../../graphql/queries';
+
+
 Amplify.configure(awsExports);
 
 // Example GraphQL query
 const listItems = `
-  query ListItems {
-    listItems {
-      items {
-        id
-        name
-      }
+  listItems {
+    items {
+      plantName
+      index
+      sendSMS
     }
   }
 `;
@@ -27,17 +29,19 @@ function Contents() {
     async function fetchData() {
       try {
         // Use graphqlOperation for GraphQL queries
-        const result = await GraphQLAPI.graphql(graphqlOperation(listItems));
+        const result = await GraphQLAPI.graphql({query: listItems});
         setItems(result.data.listItems.items);
         console.log(result)
       } catch (error) {
         //console.error('Error fetching data:', error);
-        console.log("error")
+        console.log("error", error)
       }
     }
 
     fetchData();
   }, []);
+
+  //console.log('AWS Exports:', awsExports);
 
   return (
     <Container>
