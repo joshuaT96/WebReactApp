@@ -14,7 +14,7 @@ import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-reac
 import awsExports from './aws-exports';
 
 import '@aws-amplify/ui-react/styles.css';
-import { configure } from '@testing-library/react';
+//import { configure } from '@testing-library/react';
 
 Amplify.configure(awsExports);
 
