@@ -1,12 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getVcomContent = /* GraphQL */ `
-  query GetVcomContent($id: ID!) {
-    getVcomContent(id: $id) {
+export const getSolarPlant = /* GraphQL */ `
+  query GetSolarPlant($id: ID!) {
+    getSolarPlant(id: $id) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt
@@ -14,17 +14,17 @@ export const getVcomContent = /* GraphQL */ `
     }
   }
 `;
-export const listVcomContents = /* GraphQL */ `
-  query ListVcomContents(
-    $filter: ModelVcomContentFilterInput
+export const listSolarPlants = /* GraphQL */ `
+  query ListSolarPlants(
+    $filter: ModelSolarPlantFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listVcomContents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listSolarPlants(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         index
-        active
         plantName
+        sendSMS
         id
         createdAt
         updatedAt

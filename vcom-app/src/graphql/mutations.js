@@ -1,15 +1,15 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createVcomContent = /* GraphQL */ `
-  mutation CreateVcomContent(
-    $input: CreateVcomContentInput!
-    $condition: ModelVcomContentConditionInput
+export const createSolarPlant = /* GraphQL */ `
+  mutation CreateSolarPlant(
+    $input: CreateSolarPlantInput!
+    $condition: ModelSolarPlantConditionInput
   ) {
-    createVcomContent(input: $input, condition: $condition) {
+    createSolarPlant(input: $input, condition: $condition) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt
@@ -17,15 +17,15 @@ export const createVcomContent = /* GraphQL */ `
     }
   }
 `;
-export const updateVcomContent = /* GraphQL */ `
-  mutation UpdateVcomContent(
-    $input: UpdateVcomContentInput!
-    $condition: ModelVcomContentConditionInput
+export const updateSolarPlant = /* GraphQL */ `
+  mutation UpdateSolarPlant(
+    $input: UpdateSolarPlantInput!
+    $condition: ModelSolarPlantConditionInput
   ) {
-    updateVcomContent(input: $input, condition: $condition) {
+    updateSolarPlant(input: $input, condition: $condition) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt
@@ -33,15 +33,15 @@ export const updateVcomContent = /* GraphQL */ `
     }
   }
 `;
-export const deleteVcomContent = /* GraphQL */ `
-  mutation DeleteVcomContent(
-    $input: DeleteVcomContentInput!
-    $condition: ModelVcomContentConditionInput
+export const deleteSolarPlant = /* GraphQL */ `
+  mutation DeleteSolarPlant(
+    $input: DeleteSolarPlantInput!
+    $condition: ModelSolarPlantConditionInput
   ) {
-    deleteVcomContent(input: $input, condition: $condition) {
+    deleteSolarPlant(input: $input, condition: $condition) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt

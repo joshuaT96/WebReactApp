@@ -1,14 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateVcomContent = /* GraphQL */ `
-  subscription OnCreateVcomContent(
-    $filter: ModelSubscriptionVcomContentFilterInput
+export const onCreateSolarPlant = /* GraphQL */ `
+  subscription OnCreateSolarPlant(
+    $filter: ModelSubscriptionSolarPlantFilterInput
   ) {
-    onCreateVcomContent(filter: $filter) {
+    onCreateSolarPlant(filter: $filter) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt
@@ -16,14 +16,14 @@ export const onCreateVcomContent = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateVcomContent = /* GraphQL */ `
-  subscription OnUpdateVcomContent(
-    $filter: ModelSubscriptionVcomContentFilterInput
+export const onUpdateSolarPlant = /* GraphQL */ `
+  subscription OnUpdateSolarPlant(
+    $filter: ModelSubscriptionSolarPlantFilterInput
   ) {
-    onUpdateVcomContent(filter: $filter) {
+    onUpdateSolarPlant(filter: $filter) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt
@@ -31,14 +31,14 @@ export const onUpdateVcomContent = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteVcomContent = /* GraphQL */ `
-  subscription OnDeleteVcomContent(
-    $filter: ModelSubscriptionVcomContentFilterInput
+export const onDeleteSolarPlant = /* GraphQL */ `
+  subscription OnDeleteSolarPlant(
+    $filter: ModelSubscriptionSolarPlantFilterInput
   ) {
-    onDeleteVcomContent(filter: $filter) {
+    onDeleteSolarPlant(filter: $filter) {
       index
-      active
       plantName
+      sendSMS
       id
       createdAt
       updatedAt
