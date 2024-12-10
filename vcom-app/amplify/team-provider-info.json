@@ -14,15 +14,6 @@
     "categories": {
       "auth": {
         "vcomapp817303a9": {}
-      },
-      "storage": {
-        "VCOMWEBTEST": {
-          "tableName": "VCOM_WEB_TEST",
-          "region": "us-east-1",
-          "arn": "arn:aws:dynamodb:us-east-1:767397902548:table/VCOM_WEB_TEST",
-          "partitionKeyName": "index",
-          "partitionKeyType": "N"
-        }
       }
     }
   }

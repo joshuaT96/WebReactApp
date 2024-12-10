@@ -28,54 +28,5 @@
       "service": "Cognito"
     }
   },
-  "parameters": {
-    "AMPLIFY_storage_VCOMWEBTEST_arn": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "VCOMWEBTEST"
-        }
-      ]
-    },
-    "AMPLIFY_storage_VCOMWEBTEST_partitionKeyName": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "VCOMWEBTEST"
-        }
-      ]
-    },
-    "AMPLIFY_storage_VCOMWEBTEST_partitionKeyType": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "VCOMWEBTEST"
-        }
-      ]
-    },
-    "AMPLIFY_storage_VCOMWEBTEST_region": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "VCOMWEBTEST"
-        }
-      ]
-    },
-    "AMPLIFY_storage_VCOMWEBTEST_tableName": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "VCOMWEBTEST"
-        }
-      ]
-    }
-  },
-  "storage": {
-    "VCOMWEBTEST": {
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB",
-      "serviceType": "imported"
-    }
-  }
+  "storage": {}
 }
