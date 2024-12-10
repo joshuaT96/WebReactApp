@@ -15,9 +15,6 @@
       "auth": {
         "vcomapp817303a9": {}
       },
-      "api": {
-        "vcomappAPI": {}
-      },
       "storage": {
         "VCOMWEBTEST": {
           "tableName": "VCOM_WEB_TEST",

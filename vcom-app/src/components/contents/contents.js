@@ -1,55 +1,46 @@
 import React, { useEffect, useState } from 'react';
+import AWS from 'aws-sdk';
 import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
 
-import { Amplify } from 'aws-amplify';
-import { GraphQLAPI, graphqlOperation } from '@aws-amplify/api-graphql';
 import awsExports from '../../aws-exports';
 
-import { listVcomContents } from '../../graphql/queries';
+AWS.config.update({
+  region: awsExports.aws_dynamodb_all_tables_region,
+  credentials: new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: awsExports.aws_cognito_identity_pool_id,
+  }),
+});
 
-
-Amplify.configure(awsExports);
-
-// Example GraphQL query
-const listItems = `
-  listItems {
-    items {
-      plantName
-      index
-      sendSMS
-    }
-  }
-`;
+const docClient = new AWS.DynamoDB.DocumentClient();
 
 function Contents() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
+      const params = {
+        TableName: 'VCOM_WEB_TEST',
+      };
+
       try {
-        // Use graphqlOperation for GraphQL queries
-        const result = await GraphQLAPI.graphql({query: listItems});
-        setItems(result.data.listItems.items);
-        console.log(result)
+        const data = await docClient.scan(params).promise();
+        setItems(data.Items || []);
+        console.log('DynamoDB Data:', data);
       } catch (error) {
-        //console.error('Error fetching data:', error);
-        console.log("error", error)
+        console.error('Error fetching data from DynamoDB:', error);
       }
     }
 
     fetchData();
   }, []);
 
-  //console.log('AWS Exports:', awsExports);
-
   return (
     <Container>
       <Stack direction="vertical" gap={4}>
         {items.map((item, index) => (
           <Stack key={index} direction="horizontal" gap={2}>
-            <div className="p-2">hello{item.name}</div>
-            
+            <div className="p-2">Hello {item.plantName || 'Unnamed Plant'}</div>
           </Stack>
         ))}
       </Stack>
