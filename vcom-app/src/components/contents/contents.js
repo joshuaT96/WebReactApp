@@ -51,13 +51,7 @@ const App = () => {
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
-
-
-
-
-
   return (
-
     <div>
       <h1>Solar Plant Data</h1>
         <table className='tg'>
