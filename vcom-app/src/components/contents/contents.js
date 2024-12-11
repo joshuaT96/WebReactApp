@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { API } from '@aws-amplify/api-graphql';
-import { graphqlOperation } from '@aws-amplify/api-graphql';
+//import { API } from '@aws-amplify/api-graphql';
+//import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { listSolarPlants } from '../../graphql/queries';
 import { createSolarPlant } from '../../graphql/mutations';
-
+import './tableStyles.css'
 import { generateClient } from 'aws-amplify/api';
+
 
 const client = generateClient();
 
@@ -51,17 +52,35 @@ const App = () => {
     }));
   };
 
+
+
+
+
   return (
+
     <div>
       <h1>Solar Plant Data</h1>
-      <ul>
-        {plantDisplay.map((plant) => (
-          <li key={plant.index}>
-            {plant.plantName}: {plant.sendSMS ? 'Yes' : 'No'}
-          </li>
-        ))}
-      </ul>
+        <table className='tg'>
 
+          <thead>
+            <tr>
+              <th className='tg-wp8o'>Index</th>     
+              <th className='tg-wp8o'>Plant Name</th>  
+              <th className='tg-wp8o'>SMS function active</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {plantDisplay.map((plant) => (
+              <tr key={plant.index}>
+                <td className='tg-wp8o'>{plant.index}</td>
+                <td className='tg-wp8o'>{plant.plantName}</td>
+                <td className='tg-wp8o'>{plant.sendSMS ? 'Yes' : 'No'}</td>
+              </tr>
+            ))}
+          </tbody>
+          
+        </table>
       <h2>Add New Solar Plant</h2>
       <form onSubmit={(e) => e.preventDefault()}>
         <label>

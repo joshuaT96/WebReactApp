@@ -3,15 +3,10 @@ import SiteFooter from './components/common/SiteFooter';
 import SiteNav from './components/common/SiteNav';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from 'react-router-dom'; 
-
 import HomePage from './components/home/HomePage';
-//import LoginPage from './components/auth/LoginPage';
-//import RegisterPage from './components/auth/RegisterPage';
 import Contents from './components/contents/contents';
 
-
 import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-react';
-import awsExports from './aws-exports';
 import '@aws-amplify/ui-react/styles.css';
 
 import { Amplify } from 'aws-amplify';
@@ -52,7 +47,7 @@ function App() {
 
   return (
     
-      <Authenticator loginMechanisms={['email']} components={components}>
+      <Authenticator loginMechanisms={['email']} components={components} hideSignUp={true}>
       {({signOut, user}) => (
         <div>
           <SiteNav logOut={signOut}/>
