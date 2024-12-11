@@ -31,7 +31,6 @@ function App() {
 
     Footer() {
       const { tokens } = useTheme();
-  
       return (
         <View textAlign="center" padding={tokens.space.large}>
           <Text color={tokens.colors.neutral[80]}>
@@ -57,7 +56,6 @@ function App() {
         </div>
       )}
       </Authenticator>
-
   );
 }
 
