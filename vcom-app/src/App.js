@@ -9,14 +9,18 @@ import HomePage from './components/home/HomePage';
 //import RegisterPage from './components/auth/RegisterPage';
 import Contents from './components/contents/contents';
 
-import { Amplify } from 'aws-amplify';
+
 import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-react';
 import awsExports from './aws-exports';
-
 import '@aws-amplify/ui-react/styles.css';
-//import { configure } from '@testing-library/react';
 
-Amplify.configure(awsExports);
+import { Amplify } from 'aws-amplify';
+import config from './amplifyconfiguration.json';
+
+Amplify.configure(config);
+
+
+
 
 function App() {
 
