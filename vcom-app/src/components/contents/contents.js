@@ -51,25 +51,25 @@ const App = () => {
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
+
+
   return (
     <div>
       <h1>Solar Plant Data</h1>
-        <table className='tg'>
-
+      <table class="tg">
           <thead>
             <tr>
-              <th className='tg-wp8o'>Index</th>     
-              <th className='tg-wp8o'>Plant Name</th>  
-              <th className='tg-wp8o'>SMS function active</th>
-              
+              <th className='tg-wp8o indexColumnWidth'>Index</th>     
+              <th className='tg-wp8o plantNameColunnWidth'>Plant Name</th>  
+              <th className='tg-wp8o smsActiveColumnWidth'>SMS function active</th>
             </tr>
           </thead>
           <tbody>
             {plantDisplay.map((plant) => (
               <tr key={plant.index}>
-                <td className='tg-wp8o'>{plant.index}</td>
-                <td className='tg-wp8o'>{plant.plantName}</td>
-                <td className='tg-wp8o'>{plant.sendSMS ? 'Yes' : 'No'}</td>
+                <td className='tg-wp8o indexColumnWidth'>{plant.index}</td>
+                <td className='tg-wp8o plantNameColunnWidth'>{plant.plantName}</td>
+                <td className='tg-wp8o smsActiveColumnWidth'>{plant.sendSMS ? 'Yes' : 'No'}</td>
               </tr>
             ))}
           </tbody>

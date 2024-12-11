@@ -1,21 +1,18 @@
-import './App.css';
+
 import SiteFooter from './components/common/SiteFooter';
 import SiteNav from './components/common/SiteNav';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from 'react-router-dom'; 
 import HomePage from './components/home/HomePage';
 import Contents from './components/contents/contents';
-
 import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
-
 import { Amplify } from 'aws-amplify';
 import config from './amplifyconfiguration.json';
 
+import './App.css';
+import '@aws-amplify/ui-react/styles.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 Amplify.configure(config);
-
-
-
 
 function App() {
 
