@@ -18,11 +18,16 @@ export const createSolarPlant = /* GraphQL */ `
   }
 `;
 export const updateSolarPlant = /* GraphQL */ `
-  mutation UpdateSolarPlant(
-    $input: UpdateSolarPlantInput!
-    $condition: ModelSolarPlantConditionInput
+  mutation updateSolarPlant(
+    $index: String!
+    $sendSMS: Boolean!
   ) {
-    updateSolarPlant(input: $input, condition: $condition) {
+    updateSolarPlant(
+      input: {
+        index: $index
+        sendSMS: $sendSMS
+      }
+    ) {
       index
       plantName
       sendSMS

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { listSolarPlants } from '../../graphql/queries';
-import { createSolarPlant, deleteSolarPlant } from '../../graphql/mutations';
+import { createSolarPlant} from '../../graphql/mutations';
+import { updateSolarPlant } from '../../graphql/mutations';
+//import { deleteSolarPlant } from '../../graphql/mutations';
 import './tableStyles.css';
 import { generateClient } from 'aws-amplify/api';
 import { CheckboxField } from '@aws-amplify/ui-react';
@@ -24,6 +26,7 @@ const App = () => {
       console.error('Error fetching plant data', err);
     }
   };
+  fetchPlants();
 
   const addPlant = async () => {
     try {
@@ -32,16 +35,41 @@ const App = () => {
         plantName: newPlant.plantName,
         sendSMS: newPlant.sendSMS,
       };
+      // log user input
+      console.log("user plant input: ", input)
+
       const result = await client.graphql({
         query: createSolarPlant,
         variables: { input },
       });
       console.log('New plant created:', result);
-      fetchPlants(); // Refresh the list after adding the new plant
+      fetchPlants(); // Refresh list after adding the new plant
     } catch (err) {
       console.error('Error adding new plant:', err);
     }
+
+    //reset form fields
+    setNewPlant({
+      index: '',
+      plantName: '',
+      sendSMS: false,
+    })
   };
+
+  /*
+  const updatePlant = async () => {
+    try {
+      const result = await client.graphql({
+        query: updateSendSMS,
+        variables: { index, sendSMS: sendSMSValue },
+      });
+      console.log('SendSMS updated:', result);
+      fetchPlants(); // Refresh list after updating the sendSMS attribute
+    } catch (err) {
+      console.error('Error updating SendSMS:', err);
+    }
+  };
+  */
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -59,11 +87,13 @@ const App = () => {
     );
   };
 
-  const handleButtonClick = (index) => {
-    console.log(`Button clicked for plant with index: ${index}`);
-  };
+  //const handleButtonClick = (index) => {
+  //  console.log(`Button clicked for plant with index: ${index}`);
+  //};
+  //console.log('PlantDisplay contents: ', plantDisplay)
 
-  return (
+  return (    
+
     <div>
       <h1>Solar Plant Data</h1>
       <table className="tg">
@@ -75,21 +105,23 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {plantDisplay.map((plant) => (
+          {plantDisplay.sort((a,b) => a.index - b.index).map((plant) => (
             <tr key={plant.index}>
               <td className="tg-wp8o indexColumnWidth">{plant.index}</td>
               <td className="tg-wp8o plantNameColunnWidth">{plant.plantName}</td>
               <td className="tg-wp8o smsActiveColumnWidth">{plant.sendSMS ? 'Yes' : 'No'}</td>
-              <CheckboxField
-                label="Activate SMS"
-                onChange={() => handleCheckboxChange(plant.index)}
-              />
-              <Button>
-                Activate SMS
-              </Button>
-              <Button>
-                Deactivate SMS
-              </Button>
+              <td style={{ display: 'flex', gap: '10px'}}>
+                {/*<CheckboxField
+                  label="Activate SMS"
+                  onChange={() => handleCheckboxChange(plant.index)}
+                />*/}
+                <Button>
+                  Activate SMS
+                </Button>
+                <Button>
+                  Deactivate SMS
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -128,15 +160,9 @@ const App = () => {
         <br />
         <Button onClick={addPlant}>Add Plant</Button>
       </form>
+      
+      <h2>Update Solar Plant</h2>
 
-      <h2>Remove Solar Plant</h2>
-      <form>
-        <Label>Select PV Plant index</Label>
-        <Input
-          
-        />
-
-      </form>
       
     </div>
   );
