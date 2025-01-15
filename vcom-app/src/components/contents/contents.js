@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-//import { API } from '@aws-amplify/api-graphql';
-//import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { listSolarPlants } from '../../graphql/queries';
-import { createSolarPlant } from '../../graphql/mutations';
-import './tableStyles.css'
+import { createSolarPlant, deleteSolarPlant } from '../../graphql/mutations';
+import './tableStyles.css';
 import { generateClient } from 'aws-amplify/api';
-
+import { CheckboxField } from '@aws-amplify/ui-react';
+import { Input, Button, Label } from '@aws-amplify/ui-react';
 
 const client = generateClient();
 
@@ -52,34 +51,56 @@ const App = () => {
     }));
   };
 
+  const handleCheckboxChange = (index) => {
+    setPlants((prev) =>
+      prev.map((plant) =>
+        plant.index === index ? { ...plant, sendSMS: !plant.sendSMS } : plant
+      )
+    );
+  };
+
+  const handleButtonClick = (index) => {
+    console.log(`Button clicked for plant with index: ${index}`);
+  };
 
   return (
     <div>
       <h1>Solar Plant Data</h1>
-      <table class="tg">
-          <thead>
-            <tr>
-              <th className='tg-wp8o indexColumnWidth'>Index</th>     
-              <th className='tg-wp8o plantNameColunnWidth'>Plant Name</th>  
-              <th className='tg-wp8o smsActiveColumnWidth'>SMS function active</th>
+      <table className="tg">
+        <thead>
+          <tr>
+            <th className="tg-wp8o indexColumnWidth">Index</th>
+            <th className="tg-wp8o plantNameColunnWidth">Plant Name</th>
+            <th className="tg-wp8o smsActiveColumnWidth">SMS function active</th>
+          </tr>
+        </thead>
+        <tbody>
+          {plantDisplay.map((plant) => (
+            <tr key={plant.index}>
+              <td className="tg-wp8o indexColumnWidth">{plant.index}</td>
+              <td className="tg-wp8o plantNameColunnWidth">{plant.plantName}</td>
+              <td className="tg-wp8o smsActiveColumnWidth">{plant.sendSMS ? 'Yes' : 'No'}</td>
+              <CheckboxField
+                label="Activate SMS"
+                onChange={() => handleCheckboxChange(plant.index)}
+              />
+              <Button>
+                Activate SMS
+              </Button>
+              <Button>
+                Deactivate SMS
+              </Button>
             </tr>
-          </thead>
-          <tbody>
-            {plantDisplay.map((plant) => (
-              <tr key={plant.index}>
-                <td className='tg-wp8o indexColumnWidth'>{plant.index}</td>
-                <td className='tg-wp8o plantNameColunnWidth'>{plant.plantName}</td>
-                <td className='tg-wp8o smsActiveColumnWidth'>{plant.sendSMS ? 'Yes' : 'No'}</td>
-              </tr>
-            ))}
-          </tbody>
-          
-        </table>
+          ))}
+        </tbody>
+      </table>
+
+
       <h2>Add New Solar Plant</h2>
       <form onSubmit={(e) => e.preventDefault()}>
         <label>
           Index:
-          <input
+          <Input
             type="number"
             name="index"
             value={newPlant.index}
@@ -89,7 +110,7 @@ const App = () => {
         <br />
         <label>
           Plant Name:
-          <input
+          <Input
             type="text"
             name="plantName"
             value={newPlant.plantName}
@@ -98,17 +119,25 @@ const App = () => {
         </label>
         <br />
         <label>
-          Send SMS:
-          <input
-            type="checkbox"
-            name="sendSMS"
-            checked={newPlant.sendSMS}
-            onChange={handleChange}
+          <CheckboxField
+            label="Activate SMS"
+            //checked={newPlant.sendSMS}
+            onChange={handleCheckboxChange}
           />
         </label>
         <br />
-        <button onClick={addPlant}>Add Plant</button>
+        <Button onClick={addPlant}>Add Plant</Button>
       </form>
+
+      <h2>Remove Solar Plant</h2>
+      <form>
+        <Label>Select PV Plant index</Label>
+        <Input
+          
+        />
+
+      </form>
+      
     </div>
   );
 };

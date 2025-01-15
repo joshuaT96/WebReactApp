@@ -16,6 +16,7 @@ function SiteNav(props) {
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-md-auto">
                         <Nav.Link href="/contents"> Contents </Nav.Link>
+                        <Nav.Link href='/contents-v2'> Contents V2 </Nav.Link>
                         <Nav.Link onClick={handleLogout}> Logout </Nav.Link>
                     </Nav>
                     </Navbar.Collapse>

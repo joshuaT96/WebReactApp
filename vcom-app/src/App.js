@@ -4,6 +4,7 @@ import SiteNav from './components/common/SiteNav';
 import {Route, Routes} from 'react-router-dom'; 
 import HomePage from './components/home/HomePage';
 import Contents from './components/contents/contents';
+import ContentsV2 from './components/contentsV2/contents-v2'
 import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import config from './amplifyconfiguration.json';
@@ -51,6 +52,7 @@ function App() {
               <Route path='*' element={<HomePage/>}/>
               <Route path='/' exact={true} element={<HomePage/>}/>
               <Route path='/contents' element={<Contents/>}/>
+              <Route path='/contents-v2' element={<ContentsV2/>}/>
            </Routes>
           <SiteFooter/>
         </div>
