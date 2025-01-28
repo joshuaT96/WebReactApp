@@ -48,6 +48,7 @@ const App = () => {
       console.error('Error adding new plant:', err);
     }
 
+    console.log('PlantDisplay contents: ', plantDisplay)
     //reset form fields
     setNewPlant({
       index: '',
@@ -60,8 +61,8 @@ const App = () => {
   const updatePlant = async () => {
     try {
       const result = await client.graphql({
-        query: updateSendSMS,
-        variables: { index, sendSMS: sendSMSValue },
+        query: updateSolarPlant,
+        variables: { input: index, sendSMS: sendSMSValue },
       });
       console.log('SendSMS updated:', result);
       fetchPlants(); // Refresh list after updating the sendSMS attribute
@@ -70,6 +71,7 @@ const App = () => {
     }
   };
   */
+  
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;

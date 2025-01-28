@@ -1,0 +1,26 @@
+
+
+.indexColumn {
+    width: 50px;
+    text-align: center;
+}
+  
+.plantNameColumn {
+    width: 300px;
+}
+  
+.sendSMSColumn {
+    width: 50px;
+    text-align: center;
+}
+
+.testButton {
+    background-color: blue;
+    text-align: left;
+    outline: black;
+    align-items: center;
+}
+
+.buttonForm {
+    align-items: center;
+}
