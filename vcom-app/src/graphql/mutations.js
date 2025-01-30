@@ -19,11 +19,13 @@ export const createSolarPlant = /* GraphQL */ `
 `;
 export const updateSolarPlant = /* GraphQL */ `
   mutation updateSolarPlant(
-    $index: String!
-    $sendSMS: Boolean!
+    $id: ID
+    $index: Int!
+    $sendSMS: Boolean    
   ) {
     updateSolarPlant(
       input: {
+        id: $id
         index: $index
         sendSMS: $sendSMS
       }

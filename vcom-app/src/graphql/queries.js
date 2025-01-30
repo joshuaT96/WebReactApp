@@ -22,10 +22,11 @@ export const listSolarPlants = /* GraphQL */ `
   ) {
     listSolarPlants(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
         index
         plantName
         sendSMS
-        id
+        
         createdAt
         updatedAt
         __typename
