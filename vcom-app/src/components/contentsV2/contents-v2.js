@@ -47,7 +47,7 @@ const App = () => {
         } finally {
             setIsLoading(false);
         }
-    }; 
+    };
 
     const updatePlants = async () => {
 
@@ -56,29 +56,29 @@ const App = () => {
                 plantDisplay.map(async (plant) => {
 
                     console.log(`Updating plant ${plant.index}, plantName: ${plant.plantName}, ID: ${plant.id}`);
-    
+
                     if (plant.index === null || plant.index === undefined) {
                         console.error(`Skipping update for plant due to missing index`, plant);
                         return;
                     }
-    
-                    const variables = { 
-                        input: { 
+
+                    const variables = {
+                        input: {
                             id: plant.id,
                             index: Number(plant.index),
                             sendSMS: Boolean(sendSMSStates[plant.index])
-                        } 
-                    };    
+                        }
+                    };
                     console.log('Variables being sent:', variables);
 
                     await client.graphql({
                         query: updateSolarPlant,
                         //variables: variables
-                        variables: { 
+                        variables: {
                             id: plant.id,
                             index: Number(plant.index),
                             sendSMS: Boolean(sendSMSStates[plant.index])
-                        } 
+                        }
                     });
                 })
             );
@@ -88,12 +88,12 @@ const App = () => {
             console.error('Error updating DynamoDB table ===>>>', err);
         }
     };
-    
-    
-    
-    
 
-    const handleDropdownChange = (index, value) => { 
+
+
+
+
+    const handleDropdownChange = (index, value) => {
         setSendSMSStates((prev) => ({
             ...prev,
             [index]: value === 'true',
