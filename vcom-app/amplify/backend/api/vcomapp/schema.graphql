@@ -7,3 +7,23 @@ type SolarPlant @model {
   plantName: String
   sendSMS: Boolean
 }
+
+type VCOMSMSTechnicianDetails @model {
+	code: Int!
+	cellNumber: String
+	name: String
+}
+
+type VCOMSMSBESSData @model {
+	index: Int!
+	commsLost: Int
+	commsLostCounter: Int
+	genPowerAbbreviation: String
+	genRunning: Int
+	key: String
+	plantName: String
+	sendSMS: Boolean
+	soc: Int
+	socAbbreviation: Int
+	socMinLevel: Int
+}
