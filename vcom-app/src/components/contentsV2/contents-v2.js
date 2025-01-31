@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { listSolarPlants } from '../../graphql/queries';
 import { updateSolarPlant } from '../../graphql/mutations';
 import { generateClient } from 'aws-amplify/api';
-import { Button } from 'react-bootstrap';
+import { Button, Input } from 'react-bootstrap';
 import './contentsV2Styles.css'
 
 const client = generateClient();

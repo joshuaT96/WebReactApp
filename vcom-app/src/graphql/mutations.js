@@ -1,6 +1,8 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+
+/* --------------------------------------SolarPlant (used for testing only)-----------------------------------------------*/
 export const createSolarPlant = /* GraphQL */ `
   mutation CreateSolarPlant(
     $input: CreateSolarPlantInput!
@@ -56,3 +58,13 @@ export const deleteSolarPlant = /* GraphQL */ `
     }
   }
 `;
+
+
+
+/* --------------------------------------VCOMSMSBESSData-------------------------------------------------*/
+
+
+
+
+
+/* --------------------------------------VCOMSMSTechnician-----------------------------------------------*/

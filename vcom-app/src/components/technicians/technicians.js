@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { listSolarPlants, listVCOMSMSTechnicianDetails } from '../../graphql/queries';
-import { updateSolarPlant } from '../../graphql/mutations';
+import { listVCOMSMSTechnicianDetails } from '../../graphql/queries';
 import { generateClient } from 'aws-amplify/api';
 import { Button } from 'react-bootstrap';
 import './techniciansStyles.css'
@@ -14,17 +13,14 @@ const App = () => {
 
     useEffect(() => {
         fetchTechnicians();
-        //console.log('page loaded')
-    })
+        console.log('page loaded')
+    }, [])
 
     const fetchTechnicians = async () => {
         try {
-            const techData = await client.graphql({ query: listVCOMSMSTechnicianDetails})
+            const techData = await client.graphql({ query: listVCOMSMSTechnicianDetails })
             const technicians = techData.data.listVCOMSMSTechnicianDetails.items;
             setTechs(technicians);
-
-
-
         } catch (err) {
             console.error('Error fetching technician data', err)
         } finally {
@@ -40,28 +36,37 @@ const App = () => {
     return (
 
 
-        <form>
-            <h2>TECHNICIANS INFORMATION PAGE</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th className='codeColumn'>Code</th>
-                        <th className='contactNumberColumn'>Contact Number</th>
-                        <th className='technicianColumn'>Technician</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {technicianDisplay.sort((a, b) => a.code - b.code).map((technician) => (
-                    <tr key={technician.code}>
-                        <td>{technician.code}</td>
-                        <td>{technician.cellNumber}</td>
-                        <td>{technician.name}</td>
-                    </tr>
-                ))}
 
-                </tbody>
-            </table>
-        </form>
+        <div>
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <form>
+                    <h2>TECHNICIANS INFORMATION PAGE</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th className='codeColumn'>Code</th>
+                                <th className='contactNumberColumn'>Contact Number</th>
+                                <th className='technicianColumn'>Technician</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {technicianDisplay.sort((a, b) => a.code - b.code).map((technician) => (
+                                <tr key={technician.code}>
+                                    <td>{technician.code}</td>
+                                    <td>{technician.cellNumber}</td>
+                                    <td>{technician.name}</td>
+                                </tr>
+                            ))}
+
+                        </tbody>
+                    </table>
+                </form>
+            )}
+        </div>
+
+
     );
 
 }

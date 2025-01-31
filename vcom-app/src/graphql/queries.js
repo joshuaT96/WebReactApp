@@ -1,7 +1,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-/* --------------------------------------SolarPlant-----------------------------------------------*/
+/* --------------------------------------SolarPlant (used for testing only)-----------------------------------------------*/
 export const getSolarPlant = /* GraphQL */ `
   query GetSolarPlant($id: ID!) {
     getSolarPlant(id: $id) {
@@ -58,10 +58,6 @@ export const listVCOMSMSBESSData = /* GraphQL */ `
         soc
         socAbbreviation
         socMinLevel
-        
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
@@ -82,7 +78,6 @@ export const listVCOMSMSTechnicianDetails = /* GraphQL */ `
         code
         cellNumber
         name
-
       }
       nextToken
       __typename
