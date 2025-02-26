@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { listVCOMSMSTechnicianDetails } from '../../graphql/queries';
+import { createVCOMSMSTechnicianDetails } from '../../graphql/mutations';
 import { generateClient } from 'aws-amplify/api';
-import { Button } from 'react-bootstrap';
+import { Input, Button } from '@aws-amplify/ui-react';
 import './techniciansStyles.css'
 
 const client = generateClient();
@@ -10,6 +11,7 @@ const App = () => {
 
     const [technicianDisplay, setTechs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [newTechnician, setNewTechnician] = useState({code: 1234, cellNumber: 'testnumber', name: 'testname'})
 
     useEffect(() => {
         fetchTechnicians();
@@ -29,8 +31,37 @@ const App = () => {
     }
 
 
+    const addTechnician = async () => {
+        try{
+            const input = {
+                code: newTechnician.code, 
+                cellNumber: newTechnician.cellNumber, 
+                name: newTechnician.name
+            };
+            console.log('user input: ', input)
+            const result = await client.graphql({query: createVCOMSMSTechnicianDetails, variables: {input}});
+            console.log('new technician created: ', result)
+            fetchTechnicians(); //refresh list after new tech was created.
+        }catch (err) {
+            console.error('Error adding new technician:', err);
+        }
+
+        //reset form fields
+        setNewTechnician({
+            code: 0,
+            cellNumber: '',
+            name: ''
+        })
+    };
 
 
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setNewTechnician((prevTech) => ({
+            ...prevTech,
+            [name]: value
+        }))
+    }
 
 
     return (
@@ -38,11 +69,12 @@ const App = () => {
 
 
         <div>
+            <h2>TECHNICIANS INFORMATION PAGE</h2>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
                 <form>
-                    <h2>TECHNICIANS INFORMATION PAGE</h2>
+                    
                     <table>
                         <thead>
                             <tr>
@@ -62,6 +94,34 @@ const App = () => {
 
                         </tbody>
                     </table>
+
+
+                    <form>
+                        <Input
+                            placeholder='Technician code'
+                            size='small'
+                            name='code'
+                            width={'250px'}
+                            value={newTechnician.code}
+                            onChange={handleChange}
+                        />
+                        <Input
+                            placeholder='Technician cell number'
+                            size='small'
+                            name='cellNumber'
+                            value={newTechnician.cellNumber}
+                            onChange={handleChange}
+                        />
+                        <Input
+                            placeholder='Technician name and surname'
+                            size='small'
+                            name='name'
+                            value={newTechnician.name}
+                            onChange={handleChange}
+                        />
+                        <Button onClick={addTechnician}>Add Technician</Button>
+                    </form>
+
                 </form>
             )}
         </div>

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { listSolarPlants } from '../../graphql/queries';
 import { updateSolarPlant } from '../../graphql/mutations';
 import { generateClient } from 'aws-amplify/api';
-import { Button, Input } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './contentsV2Styles.css'
 
 const client = generateClient();
 
-class ID {
+/*class ID {
     constructor(value) {
         if (typeof value !== "string" || !value.match(/^[0-9a-fA-F-]{36}$/)) {
             throw new Error("Invalid ID format");
@@ -18,7 +18,7 @@ class ID {
     toString() {
         return this.value;
     }
-}
+}*/
 
 const App = () => {
     const [plantDisplay, setPlants] = useState([]);

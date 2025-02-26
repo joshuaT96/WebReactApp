@@ -68,3 +68,15 @@ export const deleteSolarPlant = /* GraphQL */ `
 
 
 /* --------------------------------------VCOMSMSTechnician-----------------------------------------------*/
+export const createVCOMSMSTechnicianDetails = /* GraphQL */ `
+  mutation CreateVCOMSMSTechnicianDetails(
+    $input: CreateVCOMSMSTechnicianDetailsInput!
+   
+  ) {
+    createVCOMSMSTechnicianDetails(input: $input) {
+      code
+      cellNumber
+      name
+    }
+  }
+`;

@@ -18,7 +18,7 @@ function SiteNav(props) {
                         <Nav.Link href="/contents">Contents </Nav.Link>
                         <Nav.Link href='/contents-v2'>Contents V2 </Nav.Link>
                         <Nav.Link href='/technicians'>Technicians Page</Nav.Link>
-                        <Nav.Link href='/bessData'>View Plant Data</Nav.Link>
+                        <Nav.Link href='/bessData'>BESS Plant Data</Nav.Link>
                         <Nav.Link onClick={handleLogout}> Logout </Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
