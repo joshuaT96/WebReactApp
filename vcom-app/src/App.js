@@ -7,6 +7,7 @@ import Contents from './components/contents/contents';
 import ContentsV2 from './components/contentsV2/contents-v2'
 import Technicians from './components/technicians/technicians';
 import BessData from './components/BESSplantData/bessData';
+import LambdaTest from './components/LambdaTest/lambdaTest';
 import { Authenticator , View, Image, useTheme, Text} from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import config from './amplifyconfiguration.json';
@@ -57,6 +58,7 @@ function App() {
               <Route path='/contents-v2' element={<ContentsV2/>}/>
               <Route path='/technicians' element={<Technicians/>}/>
               <Route path='/bessData' element={<BessData/>}/>
+              <Route path='/lambdaTest' element={<LambdaTest/>}/>
            </Routes>
           <SiteFooter/>
         </div>
