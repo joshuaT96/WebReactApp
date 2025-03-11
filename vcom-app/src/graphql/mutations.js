@@ -63,6 +63,11 @@ export const deleteSolarPlant = /* GraphQL */ `
 
 /* --------------------------------------VCOMSMSBESSData-------------------------------------------------*/
 
+export const updateVCOMBESSPlant = /* GraphQL */ `
+
+  
+
+`
 
 
 

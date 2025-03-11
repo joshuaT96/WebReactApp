@@ -51,7 +51,7 @@ const App = () => {
             await Promise.all(
                 BESSDisplay.map(async (BESSPlant) =>{
 
-                   
+                   console.log()
                    
                     await client.graphql 
                 })       
@@ -59,6 +59,7 @@ const App = () => {
         } catch (err) {
             console.error('Error updating dynamoDB table:  ', err)
         }
+
         console.log('button pressed')
     };
 
